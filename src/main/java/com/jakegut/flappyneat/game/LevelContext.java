@@ -46,7 +46,7 @@ public class LevelContext {
             float dist = p.getX() - bird.getX();
             if(dist < minX && dist >= -52){
                 minX = dist;
-                minY = p.getY();
+                minY = p.getY() + (p.getGap() / 2);
             }
         }
 

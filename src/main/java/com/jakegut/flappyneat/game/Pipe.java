@@ -7,12 +7,14 @@ import java.util.Random;
 public class Pipe {
     private int x;
     private int y;
+    private int gap;
 
     private final int oldX;
 
     public Pipe(int x){
         reset(x);
         this.oldX = x;
+        this.gap = 200;
     }
 
     public void tick(){
@@ -35,8 +37,8 @@ public class Pipe {
         int[] ypoints1 = {y - top.getHeight(null), y, y, y - top.getHeight(null)};
 
         int[] xpoints2 = {x, x, x + bottom.getWidth(null), x + bottom.getWidth(null)};
-        int[] ypoints2 = {y + 200, y + 200  + bottom.getHeight(null),
-                y + 200  + bottom.getHeight(null), y + 200 };
+        int[] ypoints2 = {y + gap, y + gap  + bottom.getHeight(null),
+                y + gap  + bottom.getHeight(null), y + gap };
 
 
         Polygon p1 = new Polygon(xpoints1, ypoints1, 4);
@@ -47,7 +49,7 @@ public class Pipe {
 
         return
             a1.intersects(bird.getX(), bird.getY(), 35, 30) ||
-                    a2.intersects(bird.getX(), bird.getY(), 35, 35);
+                    a2.intersects(bird.getX(), bird.getY(), 35, 30);
 
     }
 
@@ -57,5 +59,9 @@ public class Pipe {
 
     public int getY() {
         return this.y;
+    }
+
+    public int getGap() {
+        return this.gap;
     }
 }
