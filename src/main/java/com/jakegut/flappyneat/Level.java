@@ -14,7 +14,7 @@ public class Level {
     private final Neat neat;
     private final LevelContext levelContext;
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         LevelContext levelContext = new LevelContext(800, 600);
 
         GenomeEvaluator evaluator = new GenomeEvaluator(levelContext);

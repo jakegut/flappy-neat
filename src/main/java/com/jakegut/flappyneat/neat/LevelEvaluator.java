@@ -14,7 +14,7 @@ import java.util.List;
 
 public class LevelEvaluator {
 
-    private static final int TICK_TIMEOUT = 10000;
+    private static final int TICK_TIMEOUT = 500000;
 
     private final LevelContext levelContext;
     private final List<BirdEvaluator> birdEvaluators;
@@ -32,8 +32,8 @@ public class LevelEvaluator {
 
             for(Genome g : s.getGenomes()){
                 Bird bird = new Bird(300,200, 50, -8);
-                GenomePropagator propogator = new GenomePropagator(g);
-                BirdEvaluator birdEvaluator = new BirdEvaluator(levelContext, bird, g, propogator);
+                GenomePropagator propagator = new GenomePropagator(g);
+                BirdEvaluator birdEvaluator = new BirdEvaluator(levelContext, bird, g, propagator);
 
                 evaluators.add(birdEvaluator);
                 levelContext.addBird(bird);
@@ -43,13 +43,10 @@ public class LevelEvaluator {
     }
 
     public void evaluateAll() {
-        float oldTime = System.currentTimeMillis();
-        while(true){
-            float currentTime = System.currentTimeMillis();
-//            float t = currentTime - oldTime;
+        int tick = 0;
+        while(tick++ < TICK_TIMEOUT){
             if(!tick(1/60f))
                 break;
-            oldTime = currentTime;
         }
     }
 
